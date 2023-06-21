@@ -5,6 +5,6 @@ In the folder 1_DFT_DATA_posit_energ, you will find data on various positions an
 
 In the 2_NNs_CODE folder, you will find the codes used for training the optimized and concatenated networks. You need to adapt the source data path and the number of atoms for each case.
 
-The results of the network training are in the 3_optimized_NN_results folder.
+The results of the network training are in the 3_optimized_NN_results folder. Weights and coeficients of NNs trainned are located at variables folder but cutted in several rar files. If you want to use it you should unrar in an archive named variables.data-00000-of-00001.
 
 In the 4_surface_energy_map_CODE folder, you will find the codes to generate proposed positions from a real position (posit_gener_xxx), those that calculate the energy matrix (energ_xxx), and the one that draws the graphs (energies_plotting).
