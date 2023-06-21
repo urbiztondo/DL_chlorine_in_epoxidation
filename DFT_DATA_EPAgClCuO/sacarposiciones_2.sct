@@ -1,0 +1,39 @@
+#!/bin/bash
+
+
+numINI=1
+
+for j in $(ls -rtld */ | awk '{print $9}' | sed 's/\///')
+
+do
+
+
+
+cd $j
+
+a=$(grep F OSZICAR | tail -1 | awk '{print $1}')
+
+for i in `seq 1 $a`
+do
+
+echo $numINI
+cp position_POSIT_$i positions_$numINI
+
+
+original=$(tail -1 position_POSIT_$i | awk '{print $1,$2,$3}')
+copia=$(tail -1 positions_$numINI | awk '{print $1,$2,$3}') 
+
+
+echo $original $copia 
+
+numINI=$(($numINI+1))
+
+
+done
+
+
+cd ..
+
+done
+
+

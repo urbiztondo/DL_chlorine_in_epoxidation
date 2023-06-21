@@ -1,0 +1,39 @@
+#!/bin/bash
+
+for j in $(ls -rtld */ | awk '{print $9}' | sed 's/\///')
+
+do
+
+primero=129
+sumar=130
+atomos=129
+
+cd $j
+
+echo "****************************"
+echo "****************************"
+echo "DIRECTORIO " $j
+
+
+
+	for i in $(grep F OSZICAR | awk '{print $1}')
+	do
+		a=$(wc -l XDATCAR | awk '{print $1}')
+		headXDATCAR=8
+		b=$(($a-$headXDATCAR))
+
+		tail -$b XDATCAR > XDATCAR_cutted
+
+		head -$primero XDATCAR_cutted | tail -$atomos > position_POSIT_$i
+		primero=$(($primero+$sumar))
+#		echo $i
+#		tail position_POSIT_$i
+	done
+
+	grep F OSZICAR | awk '{print $1,$5}'>Energies_POSIT_$j
+
+cd ..
+
+done
+
+

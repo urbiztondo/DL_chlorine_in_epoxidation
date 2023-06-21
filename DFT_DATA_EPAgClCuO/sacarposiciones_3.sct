@@ -1,0 +1,19 @@
+#!/bin/bash
+rm Energies
+
+
+for j in $(ls -rtld */ | awk '{print $9}' | sed 's/\///')
+
+do
+
+cat $j/Energies_POSIT_$j >> Energies
+wc -l Energies
+
+
+
+done
+
+
+
+
+

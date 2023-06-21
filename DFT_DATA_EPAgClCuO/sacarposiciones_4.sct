@@ -1,0 +1,14 @@
+#!/bin/bash
+
+for j in $(ls -rtld */ | awk '{print $9}' | sed 's/\///')
+
+do
+
+
+cd $j
+cp positions_* ../.
+cd ..
+
+done
+
+
