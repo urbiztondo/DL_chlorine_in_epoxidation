@@ -1,0 +1,62 @@
+Model: "model"
+__________________________________________________________________________________________________
+ Layer (type)                   Output Shape         Param #     Connected to                     
+==================================================================================================
+ max_input (InputLayer)         [(None, 129, 129, 3  0           []                               
+                                )]                                                                
+                                                                                                  
+ min_input (InputLayer)         [(None, 129, 129, 3  0           []                               
+                                )]                                                                
+                                                                                                  
+ conv2d (Conv2D)                (None, 127, 127, 64  1792        ['max_input[0][0]']              
+                                )                                                                 
+                                                                                                  
+ conv2d_3 (Conv2D)              (None, 127, 127, 64  1792        ['min_input[0][0]']              
+                                )                                                                 
+                                                                                                  
+ max_pooling2d (MaxPooling2D)   (None, 63, 63, 64)   0           ['conv2d[0][0]']                 
+                                                                                                  
+ max_pooling2d_3 (MaxPooling2D)  (None, 63, 63, 64)  0           ['conv2d_3[0][0]']               
+                                                                                                  
+ conv2d_1 (Conv2D)              (None, 61, 61, 128)  73856       ['max_pooling2d[0][0]']          
+                                                                                                  
+ conv2d_4 (Conv2D)              (None, 61, 61, 128)  73856       ['max_pooling2d_3[0][0]']        
+                                                                                                  
+ max_pooling2d_1 (MaxPooling2D)  (None, 30, 30, 128)  0          ['conv2d_1[0][0]']               
+                                                                                                  
+ max_pooling2d_4 (MaxPooling2D)  (None, 30, 30, 128)  0          ['conv2d_4[0][0]']               
+                                                                                                  
+ conv2d_2 (Conv2D)              (None, 28, 28, 256)  295168      ['max_pooling2d_1[0][0]']        
+                                                                                                  
+ conv2d_5 (Conv2D)              (None, 28, 28, 256)  295168      ['max_pooling2d_4[0][0]']        
+                                                                                                  
+ max_pooling2d_2 (MaxPooling2D)  (None, 14, 14, 256)  0          ['conv2d_2[0][0]']               
+                                                                                                  
+ max_pooling2d_5 (MaxPooling2D)  (None, 14, 14, 256)  0          ['conv2d_5[0][0]']               
+                                                                                                  
+ flatten (Flatten)              (None, 50176)        0           ['max_pooling2d_2[0][0]']        
+                                                                                                  
+ flatten_1 (Flatten)            (None, 50176)        0           ['max_pooling2d_5[0][0]']        
+                                                                                                  
+ dense (Dense)                  (None, 256)          12845312    ['flatten[0][0]']                
+                                                                                                  
+ dense_2 (Dense)                (None, 256)          12845312    ['flatten_1[0][0]']              
+                                                                                                  
+ dropout (Dropout)              (None, 256)          0           ['dense[0][0]']                  
+                                                                                                  
+ dropout_1 (Dropout)            (None, 256)          0           ['dense_2[0][0]']                
+                                                                                                  
+ dense_1 (Dense)                (None, 128)          32896       ['dropout[0][0]']                
+                                                                                                  
+ dense_3 (Dense)                (None, 128)          32896       ['dropout_1[0][0]']              
+                                                                                                  
+ concatenate (Concatenate)      (None, 256)          0           ['dense_1[0][0]',                
+                                                                  'dense_3[0][0]']                
+                                                                                                  
+ output (Dense)                 (None, 1)            257         ['concatenate[0][0]']            
+                                                                                                  
+==================================================================================================
+Total params: 26,498,305
+Trainable params: 26,498,305
+Non-trainable params: 0
+__________________________________________________________________________________________________
